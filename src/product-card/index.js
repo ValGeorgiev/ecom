@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ProductPrice from '../product-price'
 import './styles.css'
 
@@ -40,6 +41,20 @@ class ProductCard extends Component {
       </div>
     )
   }
+}
+
+ProductCard.defaultProps = {
+  image: '',
+  title: 'Placeholder',
+  brand: '',
+  price: 0
+}
+
+ProductCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  brand: PropTypes.string,
+  price: PropTypes.number.isRequired
 }
 
 export default ProductCard

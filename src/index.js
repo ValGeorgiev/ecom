@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import ProductList from './product-list'
-import data from './data'
+import Navigation from './Navigation'
 
-ReactDOM.render(<ProductList products={data} />, document.getElementById('root'))
+ReactDOM.render(<Navigation />, document.getElementById('root'))

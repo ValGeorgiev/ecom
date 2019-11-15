@@ -1,27 +1,47 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
+import styles from './styles.module.css'
 import ProductCard from '../product-card'
 import Header from '../header'
-import './styles.css'
+import logged from '../logged'
+import data from '../data'
 
-const ProductList = ({ products }) => {
-
-  return (
-    <Fragment>
-      <Header />
-      <div className="container">
-        <ProductCard {...products[0]} />
-      </div>
-    </Fragment>
-  )
+const renderCards = (products) => {
+  return products.map(product => {
+    return (
+      <Fragment key={product.id}>
+        {logged(ProductCard, product)}
+      </Fragment>
+    )
+  })
 }
 
-ProductList.defaultProps = {
-  products: []
-}
+class ProductList extends React.Component {
+  state = {
+    isRed: false,
+    ownerName: "" 
+  }
 
-ProductList.propTypes = {
-  products: PropTypes.array.isRequired
+  handleClick = () => {
+    this.setState({
+      isRed: !this.state.isRed
+    })
+  }
+
+  render() {
+    const themeClass = this.state.isRed ? styles.redContainer : styles.container
+    return (
+      <Fragment>
+        <Header />
+        <div>
+          {this.state.ownerName}
+        </div>
+        <button onClick={this.handleClick}>Toggle Red Theme</button>
+        <div className={themeClass} red={this.state.isRed}>
+          {renderCards(data)}
+        </div>
+      </Fragment> 
+    )
+  }
 }
 
 export default ProductList

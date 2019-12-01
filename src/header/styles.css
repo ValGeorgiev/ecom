@@ -4,9 +4,16 @@
   color: white;
 }
 
-.header-container span {
+.checkout-link {
+  color: white;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.header-container .home-link {
   display: inline-block;
   line-height: 70px;
+  color: white;
   margin-left: 20px;
 }
 

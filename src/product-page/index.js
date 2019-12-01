@@ -5,7 +5,7 @@ import data from '../data'
 
 
 const ProductPage = (props) => {
-  console.log(props)
+
   const product = data.filter((item) => {
     return item.id === props.match.params.id
   })[0]

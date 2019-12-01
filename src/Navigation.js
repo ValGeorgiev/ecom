@@ -6,17 +6,22 @@ import {
 } from "react-router-dom"
 import ProductList from './product-list'
 import ProductPage from './product-page'
+import CheckoutPage from './checkout-page'
 import ErrorPage from './error-page'
+import ContextWrapper from './ContextWrapper';
 
 const Navigation = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={ProductList} />
-        <Route path="/product/:id" component={ProductPage} />
-        <Route component={ErrorPage} />
-      </Switch>
-    </Router>
+    <ContextWrapper>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={ProductList} />
+          <Route path="/product/:id" component={ProductPage} />
+          <Route path="/checkout" component={CheckoutPage} />
+          <Route component={ErrorPage} />
+        </Switch>
+      </Router>
+    </ContextWrapper>
   )
 }
 

@@ -1,24 +1,30 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import './styles.css'
+import { AuthContext } from '../ContextWrapper'
 
-const ProductPrice = ({ price }) => {
-  return (
-    <p className="product-price">
-      Price: 
-      <span>
-        {price}$
-      </span>
-    </p>
-  )
-}
+class ProductPrice extends Component {
+  static contextType = AuthContext
+  render() {
+    const {
+      price
+    } = this.props
 
-ProductPrice.defaultProps = {
-  price: 0
-}
+    if (!price) {
+      return null
+    }
 
-ProductPrice.propTypes = {
-  price: PropTypes.number.isRequired
+    return (
+      <div className="product-price">
+        Price: 
+        <span>
+          {price}$
+        </span>
+        {this.context.auth ? (
+          <p>You have a 10% discount!</p>
+        ) : null}
+      </div>
+    )
+  }
 }
 
 export default ProductPrice
